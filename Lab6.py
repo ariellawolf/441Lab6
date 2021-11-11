@@ -1,5 +1,5 @@
 import time
-from led_display import LEDdisplay
+from LED8x8 import LED8x8
 
 # Simple demonstration of the LEDdisplay class.
 # Note that we don't need RPi.GPIO here since all the I/O
@@ -10,11 +10,11 @@ from led_display import LEDdisplay
 dataPin, latchPin, clockPin = 23, 24, 25
 
 # Pick a number sequence
-sequence = [8, 6, 7, 5, 3, 0, 9]
+sequence = [1, 2, 3, 4, 5, 6, 7, 8]
 
-theLEDdisplay= LEDdisplay(dataPin, latchPin, clockPin)
+ourLED= LED8x8(dataPin, latchPin, clockPin)
 
 while True:
   for n in range(len(sequence)):
-    theLEDdisplay.setNumber(sequence[n])
-    time.sleep(0.4)
+    ourLED.display(sequence[n])
+    time.sleep(0.1)
