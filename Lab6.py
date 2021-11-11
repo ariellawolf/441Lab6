@@ -15,6 +15,8 @@ sequence = [1, 2, 3, 4, 5, 6, 7, 8]
 ourLED= LED8x8(dataPin, latchPin, clockPin)
 
 while True:
-  for n in range(len(sequence)):
-    ourLED.display(sequence[n])
-    time.sleep(0.1)
+  try:
+    ourLED.display()
+    time.sleep(0.001)
+  except Exception as e:
+    print(e)

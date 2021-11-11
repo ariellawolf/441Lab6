@@ -31,4 +31,3 @@ class LED8x8():
     for n in range(1,8):
       self.shifter.shiftByte(LED8x8.pattern[n]) # load the row values
       self.shifter.shiftByte(LED8x8.row[n]) # select the given row
-      time.sleep(0.001)
