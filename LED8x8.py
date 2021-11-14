@@ -65,11 +65,11 @@ class LED8x8():
           x=-x
         if (y+j)>7 or (y+j)<0:
           y=-y
+        jprev=j
         i= x+i #current location on row (column #)
         j= y+j #current location on column (row #)
         
-        self.patternArray[j-1]=0b11111111
-        self.patternArray[j+1]=0b11111111
+        self.patternArray[jprev]=0b11111111
         self.patternArray[j]=(~((0b00000000)|(1<<(i)))&(0b11111111))
         print(bin(self.patternArray[j]))
         time.sleep(.1)
