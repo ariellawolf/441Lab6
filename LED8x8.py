@@ -32,7 +32,7 @@ class LED8x8():
     self.shifter = Shifter(data, latch, clock)
     self.patternArray= multiprocessing.Array('i', 8)
     self.rowArray= multiprocessing.Array('i', 8)
-    self.displayProcess= multiprocessing.Process(name='Display',target=LED8x8.display, args=(self.patternArray,self.rowArray))
+    self.displayProcess= multiprocessing.Process(name='Display',target=self.display, args=(self.patternArray,self.rowArray))
 
     self.displayProcess.daemon = True
     self.displayProcess.start()
@@ -40,8 +40,8 @@ class LED8x8():
 
   def display(self):
     for n in range(0,8):
-      self.shifter.shiftByte(LED8x8.patternArray[n]) # load the row values
-      self.shifter.shiftByte(LED8x8.rowArray[n]) # select the given row
+      self.shifter.shiftByte(self.patternArray[n]) # load the row values
+      self.shifter.shiftByte(self.rowArray[n]) # select the given row
       self.shifter.ping(self.shifter.latchPin)
     time.sleep(0.001)
 
