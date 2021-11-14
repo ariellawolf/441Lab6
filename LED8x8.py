@@ -80,12 +80,12 @@ class LED8x8():
       except Exception as e:
         print(e)
       
-    def smiley(self):
-      self.patternArray[0] = [0b00000000]
-      self.patternArray[1] = [0b00000000]
-      self.patternArray[2] = [0b00000000]
-      self.patternArray[3] = [0b00000000]
-      self.patternArray[4] = [0b00000000]
-      self.patternArray[5] = [0b00000000]
-      self.patternArray[6] = [0b00000000]
-      self.patternArray[7] = [0b00000000]
+  def smiley(self):
+    self.patternArray[0] = [0b00000000]
+    self.patternArray[1] = [0b00000000]
+    self.patternArray[2] = [0b00000000]
+    self.patternArray[3] = [0b00000000]
+    self.patternArray[4] = [0b00000000]
+    self.patternArray[5] = [0b00000000]
+    self.patternArray[6] = [0b00000000]
+    self.patternArray[7] = [0b00000000]
