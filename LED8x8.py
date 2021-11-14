@@ -15,33 +15,24 @@ class LED8x8():
     0b10000000 
     ]
 
-  pattern = [
-    0b11111111,
-    0b11111111,
-    0b11111111,
-    0b11111111,
-    0b11111111,
-    0b11111111,
-    0b11111111,
-    0b11111111
-    ]
 
   'LED 8x8 Class'
 
   def __init__(self, data, latch, clock):
     self.shifter = Shifter(data, latch, clock)
     self.patternArray= multiprocessing.Array('i', 8)
-    self.rowArray= multiprocessing.Array('i', 8)
-    self.displayProcess= multiprocessing.Process(target=self.smiley, args=(self.patternArray,))
+    for n in range(0,8):
+      self.patternArray[n] = 0b11111111
+    self.displayProcess= multiprocessing.Process(target=self.display, args=(self.patternArray,))
 
     self.displayProcess.daemon = True
     self.displayProcess.start()
    
 
-  def display(self):
+  def display(self,patternArray):
     while True:
       for n in range(0,8):
-        self.shifter.shiftByte(self.patternArray[n]) # load the row values
+        self.shifter.shiftByte(patternArray[n]) # load the row values
         self.shifter.shiftByte(self.row[n]) # select the given row
         self.shifter.ping(self.shifter.latchPin)
       time.sleep(0.001)

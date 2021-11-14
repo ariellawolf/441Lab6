@@ -12,7 +12,7 @@ ourLED= LED8x8(dataPin, latchPin, clockPin)
 
 while True:
   try:
-    ourLED.display()
+    ourLED.lightningBug()
     #ourLED.lightningBug()
 
   except Exception as e:
