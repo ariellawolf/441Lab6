@@ -35,7 +35,7 @@ class LED8x8():
     self.displayProcess= multiprocessing.Process(name='Display',target=LED8x8.display, args=(patternArray,rowArray))
 
     self.displayProcess.daemon = True
-   self.displayProcess.start()
+    self.displayProcess.start()
    
 
   def display(self):
