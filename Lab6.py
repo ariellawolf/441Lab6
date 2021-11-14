@@ -1,5 +1,4 @@
 from LED8x8 import LED8x8
-from random import randint
 
 # Simple demonstration of the LEDdisplay class.
 # Note that we don't need RPi.GPIO here since all the I/O
@@ -12,7 +11,7 @@ dataPin, latchPin, clockPin = 23, 24, 25
 ourLED= LED8x8(dataPin, latchPin, clockPin)
 while True:
   try:
-    ourLED.display()
+    ourLED.lightningBug()
 
   except Exception as e:
     print(e)
