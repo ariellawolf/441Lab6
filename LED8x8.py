@@ -39,12 +39,14 @@ class LED8x8():
    
 
   def display(self, patternArray):
-    for n in range(0,8):
-      self.shifter.shiftByte(patternArray[n]) # load the row values
-      self.shifter.shiftByte(self.rowArray[n]) # select the given row
-      self.shifter.ping(self.shifter.latchPin)
-    time.sleep(0.001)
-    print('displaying now')
+    while True:
+      for n in range(0,8):
+        self.shifter.shiftByte(patternArray[n]) # load the row values
+        self.shifter.shiftByte(self.rowArray[n]) # select the given row
+        self.shifter.ping(self.shifter.latchPin)
+      time.sleep(0.001)
+      print('displaying now')
+    
 
   def lightningBug(self):
     i=0
