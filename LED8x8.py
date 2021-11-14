@@ -50,9 +50,13 @@ class LED8x8():
     j=0
     while True:
       try:
-        x=randint(-1,1)  # defines motion along row                
-        y=randint(-1,1) # defines motion along column
-       
+        direction= randint(0,1)
+        if direction = 0:
+          x=randint(-1,1)  # defines motion along row      
+          y=0          
+        elif
+          y=randint(-1,1) # defines motion along column
+          x=0
         if (x+i)>7 or (x+i)<0:
           x=-x
         if (y+j)>7 or (y+j)<0:
@@ -60,7 +64,8 @@ class LED8x8():
         i= x+i #current location on row (column #)
         j= y+j #current location on column (row #)
         
-        self.patternArray[j]=0b11111111
+        self.patternArray[j-1]=0b11111111
+        self.patternArray[j+1]=0b11111111
         self.patternArray[j]=(~((0b00000000)|(1<<(i)))&(0b11111111))
         print(bin(self.patternArray[j]))
         time.sleep(.1)
