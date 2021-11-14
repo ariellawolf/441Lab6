@@ -32,7 +32,7 @@ class LED8x8():
     self.shifter = Shifter(data, latch, clock)
     self.patternArray= multiprocessing.Array('i', 8)
     self.rowArray= multiprocessing.Array('i', 8)
-    self.displayProcess= multiprocessing.Process(name='Display',target=LED8x8.display, args=(patternArray,rowArray))
+    self.displayProcess= multiprocessing.Process(name='Display',target=LED8x8.display, args=(self.patternArray,self.rowArray))
 
     self.displayProcess.daemon = True
     self.displayProcess.start()
