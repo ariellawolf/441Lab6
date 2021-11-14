@@ -32,16 +32,16 @@ class LED8x8():
     self.shifter = Shifter(data, latch, clock)
     self.patternArray= multiprocessing.Array('i', 8)
     self.rowArray= multiprocessing.Array('i', 8)
-    self.displayProcess= multiprocessing.Process(target=self.display, args=(self.patternArray,))
+    self.displayProcess= multiprocessing.Process(target=self.smiley, args=(self.patternArray,))
 
     self.displayProcess.daemon = True
     self.displayProcess.start()
    
 
-  def display(self, patternArray):
+  def display(self):
     while True:
       for n in range(0,8):
-        self.shifter.shiftByte(patternArray[n]) # load the row values
+        self.shifter.shiftByte(self.patternArray[n]) # load the row values
         self.shifter.shiftByte(self.rowArray[n]) # select the given row
         self.shifter.ping(self.shifter.latchPin)
       time.sleep(0.001)
@@ -80,7 +80,7 @@ class LED8x8():
       except Exception as e:
         print(e)
       
-  def smiley(self):
+  def smiley(self,patternArray):
     self.patternArray[0] = 0b00000000
     self.patternArray[1] = 0b00000000
     self.patternArray[2] = 0b00000000
