@@ -44,6 +44,7 @@ class LED8x8():
       self.shifter.shiftByte(rowArray[n]) # select the given row
       self.shifter.ping(self.shifter.latchPin)
     time.sleep(0.001)
+    print('displaying now')
 
   def lightningBug(self):
     i=0
