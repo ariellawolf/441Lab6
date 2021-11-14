@@ -5,14 +5,14 @@ from random import randint
 
 class LED8x8():
   row = [
-    0b10000000,
+    0b00000001,
+    0b00000010,
+    0b00000100,
+    0b00001000,
+    0b00010000,
+    0b00100000,
     0b01000000,
-    0b00000000,
-    0b00000000,
-    0b00000000,
-    0b00000000,
-    0b00000000,
-    0b00000000 
+    0b10000000 
     ]
 
   pattern = [
@@ -38,10 +38,10 @@ class LED8x8():
     self.displayProcess.start()
    
 
-  def display(self):
+  def display(self, patternArray, rowArray):
     for n in range(0,8):
-      self.shifter.shiftByte(self.patternArray[n]) # load the row values
-      self.shifter.shiftByte(self.rowArray[n]) # select the given row
+      self.shifter.shiftByte(patternArray[n]) # load the row values
+      self.shifter.shiftByte(rowArray[n]) # select the given row
       self.shifter.ping(self.shifter.latchPin)
     time.sleep(0.001)
 
@@ -53,14 +53,14 @@ class LED8x8():
         x=randint(-1,1)  # defines motion along row                
         y=randint(-1,1) # defines motion along column
        
-        if (x+i)>8 or (x+i)<0:
+        if (x+i)>7 or (x+i)<0:
           x=-x
-        if (y+j)>8 or (y+j)<0:
+        if (y+j)>7 or (y+j)<0:
           y=-y
         i= x+i #current location on row (column #)
         j= y+j #current location on column (row #)
-        self.patternArray[j]=0b00000000
-        self.patternArray[y+j]=(0b00000000)|(1<<(x+i))
+        self.patternArray[j]=0b11111111
+        self.patternArray[y+j]=(~((0b11111111)|(0<<(x+i)))&(0b11111111))
         time.sleep(.1)
 
 
