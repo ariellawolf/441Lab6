@@ -9,6 +9,7 @@ from LED8x8 import LED8x8
 dataPin, latchPin, clockPin = 23, 24, 25
 
 ourLED= LED8x8(dataPin, latchPin, clockPin)
+
 while True:
   try:
     ourLED.lightningBug()
