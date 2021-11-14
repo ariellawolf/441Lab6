@@ -59,8 +59,9 @@ class LED8x8():
           y=-y
         i= x+i #current location on row (column #)
         j= y+j #current location on column (row #)
+        
         self.patternArray[j]=0b11111111
-        self.patternArray[y+j]=(~((0b11111111)|(0<<(x+i)))&(0b11111111))
+        self.patternArray[j]=(~((0b11111111)|(0<<(i)))&(0b11111111))
         time.sleep(.1)
 
 
