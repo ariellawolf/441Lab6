@@ -62,7 +62,7 @@ class LED8x8():
         
         self.patternArray[j]=0b11111111
         self.patternArray[j]=(~((0b00000000)|(1<<(i)))&(0b11111111))
-        print(self.patternArray[j])
+        print(bin(self.patternArray[j]))
         time.sleep(.1)
 
 
