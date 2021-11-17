@@ -44,13 +44,9 @@ class LED8x8():
     j=0
     while True:
       try:
-        direction= randint(0,1)
-        if direction == 0:
-          x=randint(-1,1)  # defines motion along row      
-          y=0          
-        elif direction == 1:
-          y=randint(-1,1) # defines motion along column
-          x=0
+        x=randint(-1,1)  # defines motion along row      
+        y=randint(-1,1) # defines motion along column
+        
         else:
           print("x is: ", x)
           print("y is: ", y)
