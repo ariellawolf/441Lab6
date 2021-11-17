@@ -47,9 +47,6 @@ class LED8x8():
         x=randint(-1,1)  # defines motion along row      
         y=randint(-1,1) # defines motion along column
         
-        else:
-          print("x is: ", x)
-          print("y is: ", y)
         if (x+i)>7 or (x+i)<0:
           x=-x
         if (y+j)>7 or (y+j)<0:
